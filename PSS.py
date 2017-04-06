@@ -8,7 +8,7 @@ import gc
 def Pss():
     #T=raw_input('输入次数（间隔1s），按回车开始：')
     #Name=raw_input('输入包名：')
-    T = 300
+    T = 200
     Name = 'com.tencent.qlauncher.lite'
 
     #数据统一存放列表
@@ -81,4 +81,8 @@ def Pss():
     '''
 
 if __name__=='__main__':
+    s = time.time()
     Pss()
+    e = time.time()
+
+    print 'time:',e-s
