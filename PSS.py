@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import re
-import pylab as pl
+#import pylab as pl
 import os
 import time
 import gc
@@ -71,14 +71,14 @@ def Pss():
     avg = sum(pss) / len(pss)
     print 'average:',avg
 
+    '''
     print '生成图表...'
     pl.xlabel('')
     pl.ylabel('P S S')
     pl.title('P S S Graphic')
     pl.plot(x,pss,'y')#这个是pss
     pl.show()
-    
+    '''
 
 if __name__=='__main__':
-    time.sleep(90)
     Pss()
