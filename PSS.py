@@ -7,12 +7,12 @@ import sys
 
 def Pss():
     T = 1800
-    print "脚本名：", sys.argv[0]
-    print sys.argv
     try:
         Name = sys.argv[1]
-    except Exception, e:
-        Name = 'com.tencent.qlauncher.lite'    
+    except:
+        Name = 'com.tencent.qlauncher.lite' 
+    system_version = ''.join(os.popen('adb shell getprop ro.build.version.release').readlines())
+    system_version = int( ''.join(system_version.split('.')[:2]) )
     pss = []
     try:
         for jc in range(int(T)):
@@ -23,10 +23,13 @@ def Pss():
                 print '连接失败'
                 break
             a=''.join(os.popen('adb shell dumpsys meminfo %s'%Name).readlines())
-            #安卓7.0以下
-            a=a.split('\r\n') 
-            #安卓7.1
-            #a=a.split('\n')
+            
+            if  system_version <= 70:
+                #安卓7.0及以下
+                a=a.split('\r\n') 
+            else:
+                #安卓7.1
+                a=a.split('\n')
             for ck in a:
                 if ck.find('TOTAL') != -1 and ck.find(':') == -1:
                     p=re.findall(r'\d+',ck)
