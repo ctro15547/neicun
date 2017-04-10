@@ -3,10 +3,16 @@ import re
 #import pylab as pl
 import os
 import time
-#
+import sys
+
 def Pss():
     T = 1800
-    Name = 'com.tencent.qlauncher.lite'
+    print "脚本名：", sys.argv[0]
+    print sys.argv
+    try:
+        Name = sys.argv[1]
+    except Exception, e:
+        Name = 'com.tencent.qlauncher.lite'    
     pss = []
     try:
         for jc in range(int(T)):
@@ -27,7 +33,7 @@ def Pss():
                     print p[0]
                     pss.append(int(p[0]))
             print jc + 1
-            time.sleep(0.44)
+            time.sleep(0.40)
         print '录制完毕，正在处理...'
     except:
         print 'error'
