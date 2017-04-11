@@ -1,5 +1,6 @@
 import subprocess
 import getopt
+import sys
 opts, args = getopt.getopt(sys.argv[1:], "hp:t:c:d:")
 
 try:
