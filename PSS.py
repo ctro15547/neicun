@@ -3,14 +3,21 @@ import re
 #import pylab as pl
 import os
 import time
-import sys
+import sys,getopt
 
 def Pss():
-    T = 1800
     try:
-        Name = sys.argv[1]
+        opts, args = getopt.getopt(sys.argv[1:], "hp:t:")
+        for op, value in opts:
+            if op == '-p':
+                #print value
+                Name = value
+            if op == '-t':
+                #print value
+                T = value
     except:
         Name = 'com.tencent.qlauncher.lite' 
+        T = 1800
     system_version = ''.join(os.popen('adb shell getprop ro.build.version.release').readlines())
     system_version = int( ''.join(system_version.split('.')[:2]) )
     pss = []
