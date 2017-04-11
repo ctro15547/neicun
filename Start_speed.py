@@ -28,7 +28,7 @@ def record_and_untied(b,x,y):
 		child.wait()
 if __name__ == '__main__':
 
-	opts, args = getopt.getopt(sys.argv[1:], "hc:d:")
+	opts, args = getopt.getopt(sys.argv[1:], "hp:t:c:d:")
 	for op, value in opts:
 		if op == '-c':
 			X = int(value.split(',')[0])

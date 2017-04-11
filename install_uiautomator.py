@@ -1,4 +1,6 @@
 import subprocess
+import getopt
+opts, args = getopt.getopt(sys.argv[1:], "hp:t:c:d:")
 
 try:
 	import urllib3

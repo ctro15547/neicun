@@ -7,7 +7,7 @@ import sys,getopt
 
 def Pss():
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "hp:t:")
+        opts, args = getopt.getopt(sys.argv[1:], "hp:t:c:d:")
         for op, value in opts:
             if op == '-p':
                 #print value
@@ -18,6 +18,7 @@ def Pss():
     except:
         Name = 'com.tencent.qlauncher.lite' 
         T = 1800
+        raise ValueError('error')
     system_version = ''.join(os.popen('adb shell getprop ro.build.version.release').readlines())
     system_version = int( ''.join(system_version.split('.')[:2]) )
     pss = []
