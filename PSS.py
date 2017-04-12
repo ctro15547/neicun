@@ -16,10 +16,14 @@ def Pss():
                 #print value
                 T = value
             if op == '-wp':
+                #声明全局变量 Jenkins工作目录
+                #这是组成生成数据文件路径
+                global path1
                 path1 = value
     except:
-        Name = 'com.tencent.qlauncher.lite' 
+        Name = 'com.taobao.idlefish' 
         T = 1800
+        path1 = r'F:\Jenkins\workspace\Performance_Testing'
         raise ValueError('error')
     system_version = ''.join(os.popen('adb shell getprop ro.build.version.release').readlines())
     system_version = int( ''.join(system_version.split('.')[:2]) )
