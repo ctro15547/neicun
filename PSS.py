@@ -7,7 +7,7 @@ import sys,getopt
 
 def Pss():
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "hp:t:c:d:")
+        opts, args = getopt.getopt(sys.argv[1:], "hp:t:c:d:wp:")
         for op, value in opts:
             if op == '-p':
                 #print value
@@ -15,6 +15,8 @@ def Pss():
             if op == '-t':
                 #print value
                 T = value
+            if op == '-wp':
+                path1 = value
     except:
         Name = 'com.tencent.qlauncher.lite' 
         T = 1800
@@ -50,7 +52,7 @@ def Pss():
         print 'error'
     #x=range(0,len(pss))
     print '生成数据文件...'
-    File = open('C:\\PssData.txt','w')
+    File = open( r'%s'%(path1) + r'\PssData.txt','w' )
     for i in range(len(pss)):
         #File.write(str(x[i])+' '+str(pss[i])+'\n')
         File.write(str(pss[i])+'\n')
