@@ -29,7 +29,7 @@ def record_and_untied(b,x,y):
 if __name__ == '__main__':
 
 	global path1
-	
+
 	opts, args = getopt.getopt(sys.argv[1:], "hp:t:c:d:l:")
 	for op, value in opts:
 		if op == '-c':
@@ -39,7 +39,8 @@ if __name__ == '__main__':
 			#print value
 			PHONE_ID = value
 		if op == '-l':
-			path1 = value
+			times = '\\' + str(time.strftime("%m%d-%H%M%S", time.localtime()))
+			path1 = value + times
 
 	d = Device(PHONE_ID)
 	print X,Y
