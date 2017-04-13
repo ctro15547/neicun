@@ -1,7 +1,10 @@
 import subprocess
 import getopt
 import sys
-opts, args = getopt.getopt(sys.argv[1:], "hp:t:c:d:")
+try:
+	opts, args = getopt.getopt(sys.argv[1:], "hp:t:c:d:l:")
+except:
+	pass
 
 try:
 	import urllib3
