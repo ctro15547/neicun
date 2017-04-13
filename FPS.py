@@ -5,7 +5,7 @@ import os
 import time
 import gc
 
-def Fps(T,Name):
+def Fps(T,Name,path2):
     print u"'请确保开发者选项中的'GPU呈现模式分析'调整正确"
     data = os.popen('adb shell getprop ro.build.version.release').readlines()
     version = re.findall(r'\d', ''.join(data))
@@ -57,7 +57,7 @@ def Fps(T,Name):
     for i in range(len(e)):
         sta.append(16)
     print '生成数据文件...'
-    File=open('C:\\FpsData.txt','w')
+    File = open( r'%s'%(path2) + r'\FpsData.txt','w')
     for i in range(len(e)):
         File.write(str(x[i])+' '+str(e[i])+'\n')
     File.close()
@@ -75,7 +75,7 @@ if __name__=='__main__':
     name =''
     t = ''
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "hp:t:c:d:")
+        opts, args = getopt.getopt(sys.argv[1:], "hp:t:c:d:l:")
         for op, value in opts:
             if op == '-p':
                 #print value
@@ -83,9 +83,11 @@ if __name__=='__main__':
             if op == '-t':
                 #print value
                 t = value
+            if op == '-l':
+                path1 = value
     except:
         print 'error'
         name = 'com.taobao.idlefish' 
         t = 180
         raise ValueError('error')
-    Fps(t,name)
+    Fps(t,name,path1)

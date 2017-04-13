@@ -15,12 +15,12 @@ def record_and_untied(b,x,y):
 	child.kill()
 	child.wait()
 	time.sleep(1)
-	os.makedirs('c:/jiezhen/%d'%(b))
+	os.makedirs( r'%s'%(path1) + r'\jiezhen\%d'%(b))
 	print 'mkdir-'*20
-	child = subprocess.Popen(['adb','pull','sdcard/record%d.mp4'%(b),'c:/jiezhen/%d.mp4'%(b)])
+	child = subprocess.Popen(['adb','pull','sdcard/record%d.mp4'%(b), r'%s'%(path1) + r'\jiezhen\%d.mp4'%(b)])
 	child.wait()	
 	ffmpeg_path = os.path.split(os.path.realpath(__file__))[0] + '\\ffmpeg.exe'
-	subprocess.Popen('%s'%(ffmpeg_path)+' -i c:/jiezhen/%d.mp4 -f image2 -vf fps=fps=50 c:/jiezhen/%d'%(b,b)+r'/%d.jpg')
+	subprocess.Popen('%s'%(ffmpeg_path) + r' -i %s\jiezhen\%d.mp4 -f image2 -vf fps=fps=50 %s\jiezhen\%d'%(path1,b,path1,b)+r'/%d.jpg')
 	if b == 3:
 		time.sleep(7)
 		sys.exit(0)
@@ -28,7 +28,9 @@ def record_and_untied(b,x,y):
 		child.wait()
 if __name__ == '__main__':
 
-	opts, args = getopt.getopt(sys.argv[1:], "hp:t:c:d:")
+	global path1
+	
+	opts, args = getopt.getopt(sys.argv[1:], "hp:t:c:d:l:")
 	for op, value in opts:
 		if op == '-c':
 			X = int(value.split(',')[0])
@@ -36,12 +38,14 @@ if __name__ == '__main__':
 		if op == '-d':
 			#print value
 			PHONE_ID = value
+		if op == '-l':
+			path1 = value
 
 	d = Device(PHONE_ID)
 	print X,Y
 	print d.info
 	try:
-		os.makedirs(r'c:\\jiezhen')
+		os.makedirs( r'%s'%(path1) + r'\jiezhen')
 	except:
 		pass
 
