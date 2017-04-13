@@ -57,7 +57,8 @@ def Fps(T,Name,path2):
     for i in range(len(e)):
         sta.append(16)
     print '生成数据文件...'
-    File = open( r'%s'%(path2) + r'\FpsData.txt','w')
+    tiems = time.strftime("%m%d-%H%M%S", time.localtime())
+    File = open( r'%s'%(path2) + r'\FpsData%s.txt'%(tiems),'w')
     for i in range(len(e)):
         File.write(str(x[i])+' '+str(e[i])+'\n')
     File.close()

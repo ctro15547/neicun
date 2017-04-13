@@ -21,7 +21,7 @@ def Pss():
         T = 1800
         path1 = r'F:\Jenkins\workspace\Performance_Testing'
         raise ValueError('error')
-        
+
     system_version = ''.join(os.popen('adb shell getprop ro.build.version.release').readlines())
     system_version = int( ''.join(system_version.split('.')[:2]) )
     pss = []
@@ -53,7 +53,8 @@ def Pss():
         print 'error'
     #x=range(0,len(pss))
     print '生成数据文件...'
-    File = open( r'%s'%(path1) + r'\PssData.txt','w' )
+    tiems = time.strftime("%m%d-%H%M%S", time.localtime())
+    File = open( r'%s'%(path1) + r'\PssData%s.txt'%(tiems),'w' )
     for i in range(len(pss)):
         #File.write(str(x[i])+' '+str(pss[i])+'\n')
         File.write(str(pss[i])+'\n')

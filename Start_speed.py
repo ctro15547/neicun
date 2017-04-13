@@ -39,7 +39,7 @@ if __name__ == '__main__':
 			#print value
 			PHONE_ID = value
 		if op == '-l':
-			times = '\\' + str(time.strftime("%m%d-%H%M%S", time.localtime()))
+			times = '\\jiezhen' + str(time.strftime("%m%d-%H%M%S", time.localtime()))
 			path1 = value + times
 
 	d = Device(PHONE_ID)
