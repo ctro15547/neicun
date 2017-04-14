@@ -27,6 +27,7 @@ def Pss():
         pass
     system_version = ''.join(os.popen('adb shell getprop ro.build.version.release').readlines())
     system_version = int( ''.join(system_version.split('.')[:2]) )
+    print system_version
     pss = []
     try:
         for jc in range(int(T)):
