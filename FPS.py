@@ -85,10 +85,16 @@ if __name__=='__main__':
                 #print value
                 t = value
             if op == '-l':
-                path1 = value
+                path1 = value + 'data_%s'%( str(time.strftime("%m%d", time.localtime())) )
     except:
         print 'error'
         name = 'com.taobao.idlefish' 
         t = 180
         raise ValueError('error')
+
+    try:
+        os.makedirs('%s'%(path1))
+    except:
+        pass
+        
     Fps(t,name,path1)
