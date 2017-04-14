@@ -46,12 +46,12 @@ if __name__ == '__main__':
 	print X,Y
 	print d.info
 
-'''
+
 	try:
-		os.makedirs( r'%s'%(path1) + r'\jiezhen')
+		pass
+		#os.makedirs( r'%s'%(path1) + r'\jiezhen')
 	except:
 		pass
-'''
 
 	for k in xrange(1,4):
 		record_and_untied(k, X, Y)
