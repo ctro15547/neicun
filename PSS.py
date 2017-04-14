@@ -15,13 +15,16 @@ def Pss():
                 #print value
                 T = value
             if op == '-l':
-                path1 = value
+                path1 = value + 'data_%s'%(str(time.strftime("%m%d", time.localtime())))
     except:
         Name = 'com.taobao.idlefish' 
         T = 1800
         path1 = r'F:\Jenkins\workspace\Performance_Testing'
         raise ValueError('error')
-
+    try:
+        os.makedirs('%s'%(path1))
+    except:
+        pass
     system_version = ''.join(os.popen('adb shell getprop ro.build.version.release').readlines())
     system_version = int( ''.join(system_version.split('.')[:2]) )
     pss = []
