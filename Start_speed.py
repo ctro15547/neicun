@@ -15,12 +15,12 @@ def record_and_untied(b,x,y):
 	child.kill()
 	child.wait()
 	time.sleep(1)
-	os.makedirs( r'%s'%(path1) + r'\jiezhen\%d'%(b))
+	os.makedirs( r'%s'%(path1) + r'\%d'%(b))
 	print 'mkdir-'*20
-	child = subprocess.Popen(['adb','pull','sdcard/record%d.mp4'%(b), r'%s'%(path1) + r'\jiezhen\%d.mp4'%(b)])
+	child = subprocess.Popen(['adb','pull','sdcard/record%d.mp4'%(b), r'%s'%(path1) + r'\%d.mp4'%(b)])
 	child.wait()	
 	ffmpeg_path = os.path.split(os.path.realpath(__file__))[0] + '\\ffmpeg.exe'
-	subprocess.Popen('%s'%(ffmpeg_path) + r' -i %s\jiezhen\%d.mp4 -f image2 -vf fps=fps=50 %s\jiezhen\%d'%(path1,b,path1,b)+r'/%d.jpg')
+	subprocess.Popen('%s'%(ffmpeg_path) + r' -i %s\%d.mp4 -f image2 -vf fps=fps=50 %s\%d'%(path1,b,path1,b)+r'/%d.jpg')
 	if b == 3:
 		time.sleep(7)
 		sys.exit(0)
@@ -40,15 +40,18 @@ if __name__ == '__main__':
 			PHONE_ID = value
 		if op == '-l':
 			times = '\\jiezhen' + str(time.strftime("%m%d-%H%M%S", time.localtime()))
-			path1 = value + times
+			path1 = value + 'data_%s'%(str(time.strftime("%m%d", time.localtime()))) + times
 
 	d = Device(PHONE_ID)
 	print X,Y
 	print d.info
+
+'''
 	try:
 		os.makedirs( r'%s'%(path1) + r'\jiezhen')
 	except:
 		pass
+'''
 
 	for k in xrange(1,4):
 		record_and_untied(k, X, Y)
