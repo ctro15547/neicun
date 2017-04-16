@@ -14,6 +14,8 @@ def record_and_untied(b,x,y):
 	time.sleep(0.5)
 	child.kill()
 	child.wait()
+	subprocess.Popen('adb shell am force-stop com.tencent.wh.ai.assistant')
+	child.wait()
 	time.sleep(1)
 	os.makedirs( r'%s'%(path1) + r'\%d'%(b))
 	print 'mkdir-'*20
