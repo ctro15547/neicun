@@ -53,9 +53,9 @@ def CPU(app_name='',path='c:/'):
 			a = os.popen('adb shell top -m 80 -n 1 -s cpu').readlines()
 			#print a
 			for i in range(len(a)):
-				if ''.join(a[i]).find('%s'%app_name) != -1 and ''.join(a[i]).find(':'):
+				if ''.join(a[i]).find('%s'%app_name) != -1 and ''.join(a[i]).find(':') == -1:
 					b = ''.join(a[i])
-					print b
+					#print b
 					#连接成功就重置控制变量P
 					p = 0
 					break
