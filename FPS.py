@@ -62,7 +62,7 @@ def Fps(T,Name,path2):
     File = open( r'%s'%(path2) + r'\FpsData%s.txt'%(tiems),'w')
     for i in range(len(e)):
         #File.write(str(x[i])+' '+str(e[i])+'\n')
-        File.write(sstr(e[i])+'\n')
+        File.write(str(e[i])+'\n')
     File.close()
     '''
     print '生成图表...'
