@@ -30,7 +30,7 @@ def Fps(T,Name,path2):
             if i.lower().islower() == False:
                 c=c+i+'\n'
         n.append(re.findall(r'\d+\.\d+',c))
-        print n
+        #print n
         del a
         del c
         gc.collect()
