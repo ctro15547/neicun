@@ -50,15 +50,19 @@ def Fps(T,Name,path2):
             k=0
         else:
             k=k+float(s[i])
+    '''
     x=range(0,len(e))
+
     sta=[]
     for i in range(len(e)):
         sta.append(16)
+    '''
     print '生成数据文件...'
     tiems = time.strftime("%m%d-%H%M%S", time.localtime())
     File = open( r'%s'%(path2) + r'\FpsData%s.txt'%(tiems),'w')
     for i in range(len(e)):
-        File.write(str(x[i])+' '+str(e[i])+'\n')
+        #File.write(str(x[i])+' '+str(e[i])+'\n')
+        File.write(sstr(e[i])+'\n')
     File.close()
     '''
     print '生成图表...'
