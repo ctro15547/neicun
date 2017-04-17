@@ -4,8 +4,9 @@ from uiautomator import Device
 import subprocess
 import time
 import sys, getopt
-def record_and_untied(b,x,y):
+def record_and_untied(b,x,y,a):
 	#2000000
+	os.popen('adb shell am force-stop %s'%(a))
 	child = subprocess.Popen('adb shell screenrecord --bit-rate 6000000 /sdcard/record%d.mp4'%(b))
 	time.sleep(1)
 	d.click(x, y)
@@ -13,8 +14,6 @@ def record_and_untied(b,x,y):
 	d.press("home")
 	time.sleep(0.5)
 	child.kill()
-	child.wait()
-	subprocess.Popen('adb shell am force-stop com.tencent.wh.ai.assistant')
 	child.wait()
 	time.sleep(1)
 	os.makedirs( r'%s'%(path1) + r'\%d'%(b))
@@ -43,7 +42,8 @@ if __name__ == '__main__':
 		if op == '-l':
 			times = '\\jiezhen' + str(time.strftime("%m%d-%H%M%S", time.localtime()))
 			path1 = value + 'data_%s'%(str(time.strftime("%m%d", time.localtime()))) + times
-
+		if op == '-p':
+			app = value
 	d = Device(PHONE_ID)
 	print X,Y
 	print d.info
@@ -56,4 +56,4 @@ if __name__ == '__main__':
 		pass
 
 	for k in xrange(1,4):
-		record_and_untied(k, X, Y)
+		record_and_untied(k, X, Y,a=app)
