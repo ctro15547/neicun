@@ -6,7 +6,7 @@ import time
 import gc
 
 def Fps(T,Name,path2):
-    print u"'请确保开发者选项中的'GPU呈现模式分析'调整正确"
+    print "请确保开发者选项中的GPU呈现模式分析调整正确"
     system_version = ''.join(os.popen('adb shell getprop ro.build.version.release').readlines())
     system_version = int( ''.join(system_version.split('.')[:1]) )
     print system_version
