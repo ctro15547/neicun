@@ -78,6 +78,7 @@ if __name__=='__main__':
     name =''
     t = ''
     try:
+        import sys,getopt
         opts, args = getopt.getopt(sys.argv[1:], "hp:t:c:d:l:")
         for op, value in opts:
             if op == '-p':
@@ -87,7 +88,7 @@ if __name__=='__main__':
                 #print value
                 t = value
             if op == '-l':
-                path1 = value + 'data_%s'%( str(time.strftime("%m%d", time.localtime())) )
+                path1 = value + 'data_%s'%( str(time.strftime("%m%d", time.localtime())))
     except:
         print 'error'
         name = 'com.taobao.idlefish' 
