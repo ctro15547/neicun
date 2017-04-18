@@ -19,13 +19,6 @@ def CPU(app_name='',path='c:/'):
 
 	cut_formula = re.compile(r'\s+')
 
-	system_version = ''.join(os.popen('adb shell getprop ro.build.version.release').readlines())
-	system_version = int( ''.join(system_version.split('.')[:1]) )
-	print system_version
-	if  system_version > 6:
-		lv = 5
-	else:
-		lv = 3
 		
 	#存放CPU数据的数组
 	cpu_array = []
@@ -76,9 +69,11 @@ def CPU(app_name='',path='c:/'):
 				if  p == 0:
 					b = ''.join(re.sub(cut_formula,'?', b)).split('?')
 					#print '2',b
-					b = re.match(r'\d+',b[lv]).group()
-					cpu_array.append(b) 
-					print b,'%'
+					for k in b:
+						if k.find('%') != -1:
+							k = re.match(r'\d+',k).group()
+							cpu_array.append(k) 
+							print k,'%'
 			except:
 				if p == 5:
 					raise ValueError('b')
