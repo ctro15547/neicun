@@ -54,9 +54,18 @@ def Fps(T,Name,path2):
         fps.append( int(fps_avg) )
         print 'fps:',int(fps_avg)        
 
+    print 'average:',sum(fps) / len(fps)
+    
+    counter = 0
+    for x in fps:
+        if x >= 60:
+            counter += 1
+    kkk = (float(counter) / float(len(fps)))*100
+    print 'fps>=60: %.2f'%(float(kkk))
+
     print '生成数据文件...'
     tiems = time.strftime("%m%d-%H%M%S", time.localtime())
-    File = open( r'%s'%(path2) + r'\FpsData%s.txt'%(tiems),'w')
+    File = open( r'%s'%(path2) + r'\Fps2Data%s.txt'%(tiems),'w')
     for i in range( len(fps) ):
         #File.write(str(x[i])+' '+str(e[i])+'\n')
         File.write( str(fps[i]) + '\n' )
