@@ -23,7 +23,7 @@ def record_and_untied(b,x,y,a):
 	ffmpeg_path = os.path.split(os.path.realpath(__file__))[0] + '\\ffmpeg.exe'
 	subprocess.Popen('%s'%(ffmpeg_path) + r' -i %s\%d.mp4 -f image2 -vf fps=fps=50 %s\%d'%(path1,b,path1,b)+r'/%d.jpg')
 	if b == 3:
-		time.sleep(7)
+		time.sleep(10)
 		sys.exit(0)
 	else:
 		child.wait()

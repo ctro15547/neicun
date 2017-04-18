@@ -19,7 +19,6 @@ def CPU(app_name='',path='c:/'):
 
 	cut_formula = re.compile(r'\s+')
 
-		
 	#存放CPU数据的数组
 	cpu_array = []
 	
