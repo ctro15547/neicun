@@ -1,5 +1,6 @@
 from uiautomator import Device
 import time
+import os
 
 try:
 	import sys,getopt
@@ -20,8 +21,9 @@ print d.info
 coordinate_list = s.split(';')
 print coordinate_list
 while 1 > 0:
+	link=''.join(os.popen('adb devices').readlines()[1])
 	try:
-		test = d.info
+		assert link.find('device') !=- 1,u'error'
 	except:
 		print 'off line'
 		break
