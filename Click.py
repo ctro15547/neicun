@@ -22,7 +22,8 @@ link = ''.join(os.popen('adb devices').readlines()[1])
 try:
 	assert link.find('device') !=- 1,u'error'
 except:
-	raise ValueError('off line')
+	print 'off line'
+	exit(0)
 
 
 d = Device(Phone_ID)
