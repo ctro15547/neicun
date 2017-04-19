@@ -37,8 +37,8 @@ def APP_traffic(App_name):
 if __name__ == '__main__':
 
 	import time
-	name = 'com.tencent.wh.ai.assistant'
-	t = 60
+	name = 'com.netease.cloudmusic'
+	t = 180
 	try:
 		import sys,getopt
 		opts, args = getopt.getopt(sys.argv[1:], "hp:t:c:d:l:")
@@ -59,7 +59,7 @@ if __name__ == '__main__':
 	print 'start_tcp_snd: %.2f KB'%(start_snd)
 	print 'start_tcp_rcv: %.2f KB'%(start_rcv)
 
-	time.sleep(t)
+	time.sleep(int(t))
 
 	a = APP_traffic(name)
 	end_snd = float(a['tcp_snd']) / 1024
