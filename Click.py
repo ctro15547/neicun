@@ -15,13 +15,24 @@ try:
 except:
 	raise ValueError('error')
 
+#print Phone_ID
+
+link = ''.join(os.popen('adb devices').readlines()[1])
+#print link
+try:
+	assert link.find('device') !=- 1,u'error'
+except:
+	raise ValueError('off line')
+
+
 d = Device(Phone_ID)
 print d.info
-#s = '683,263;home'
-coordinate_list = s.split(';')
+#s = '683,263.home'
+coordinate_list = s.split('.')
 print coordinate_list
+
 while 1 > 0:
-	link=''.join(os.popen('adb devices').readlines()[1])
+	link = ''.join(os.popen('adb devices').readlines()[1])
 	try:
 		assert link.find('device') !=- 1,u'error'
 	except:
@@ -41,3 +52,4 @@ while 1 > 0:
 			print 'click:',c[0],c[1]
 			d.click(int(c[0]) ,int(c[1]))
 			time.sleep(1.9)
+
