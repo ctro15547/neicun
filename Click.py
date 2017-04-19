@@ -2,6 +2,7 @@ from uiautomator import Device
 import time
 
 try:
+	import sys,getopt
 	opts, args = getopt.getopt(sys.argv[1:], "hp:t:c:d:l:")
 	for op, value in opts:
 		if op == '-d':
@@ -19,17 +20,22 @@ print d.info
 coordinate_list = s.split(';')
 print coordinate_list
 while 1 > 0:
+	try:
+		test = d.info
+	except:
+		print 'off line'
+		break
 	for coordinate in coordinate_list:
 		if coordinate == 'back':
 			print 'back'
 			d.press("back")
-			time.sleep(2)
+			time.sleep(1.9)
 		elif coordinate == 'home':
 			print 'home'
 			d.press("home")
-			time.sleep(2)
+			time.sleep(1.9)
 		else:
 			c = ''.join(coordinate).split(',')
 			print 'click:',c[0],c[1]
 			d.click(int(c[0]) ,int(c[1]))
-			time.sleep(2)
+			time.sleep(1.9)
