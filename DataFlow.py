@@ -56,16 +56,16 @@ if __name__ == '__main__':
 	a = APP_traffic(name)
 	start_snd = float(a['tcp_snd']) / 1024
 	start_rcv = float(a['tcp_rcv']) / 1024
-	print 'start_tcp_snd: %.2f KB'%(float(a['tcp_snd']) / 1024)
-	print 'start_tcp_rcv: %.2f KB'%(float(a['tcp_rcv']) / 1024)
+	print 'start_tcp_snd: %.2f KB'%(start_snd)
+	print 'start_tcp_rcv: %.2f KB'%(start_rcv)
 
 	time.sleep(t)
 
 	a = APP_traffic(name)
 	end_snd = float(a['tcp_snd']) / 1024
 	end_rcv = float(a['tcp_rcv']) / 1024
-	print 'end_tcp_snd: %.2f KB'%(float(a['tcp_snd']) / 1024)
-	print 'end_tcp_rcv: %.2f KB'%(float(a['tcp_rcv']) / 1024)
+	print 'end_tcp_snd: %.2f KB'%(end_snd)
+	print 'end_tcp_rcv: %.2f KB'%(end_rcv)
 	print '**'*20
 	print 'tcp_snd: %.2f KB'%(end_snd - start_snd)
 	print 'tcp_rcv: %.2f KB'%(end_rcv - start_rcv)
