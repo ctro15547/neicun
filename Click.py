@@ -37,7 +37,7 @@ while 1 > 0:
 		assert link.find('device') !=- 1,u'error'
 	except:
 		print 'off line'
-		break
+		exit(0)
 	for coordinate in coordinate_list:
 		if coordinate == 'back':
 			print 'back'
