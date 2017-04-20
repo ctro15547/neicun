@@ -112,7 +112,7 @@ if __name__ == '__main__':
 		
 	print '生成数据文件...'
 	tiems = time.strftime("%m%d-%H%M%S", time.localtime())
-	File = open( r'%s'%(path2) + r'\Data_Flow_Data%s.txt'%(tiems),'w')
+	File = open( r'%s'%(path1) + r'\Data_Flow_Data%s.txt'%(tiems),'w')
 	#File = open( 'c:\Data_Flow_Data%s.txt'%(tiems) ,'w')
 	File.write( 'SND' + ' ' + 'RCV' + '\n' )
 	for i in range( len(all_snd) ):
