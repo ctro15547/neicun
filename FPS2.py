@@ -15,6 +15,7 @@ def Fps(T,Name,path2):
     else:
         lv=4
     fps = []
+    Fps_raw =[]
     for jc in range(int(T)):
         n=[]
         link=''.join(os.popen('adb devices').readlines()[1])
@@ -46,9 +47,11 @@ def Fps(T,Name,path2):
             if (i+1)%lv==0:
                 k=k+float(s[i])
                 e.append(float('%.2f'%k))
+                Fps_raw.append(int(k))
                 k=0
             else:
                 k=k+float(s[i])
+                
         fps_avg = sum(e) / len(e)
         fps_avg = 1000 / fps_avg
         fps.append( int(fps_avg) )
@@ -66,10 +69,14 @@ def Fps(T,Name,path2):
     print '生成数据文件...'
     tiems = time.strftime("%m%d-%H%M%S", time.localtime())
     File = open( r'%s'%(path2) + r'\Fps2Data%s.txt'%(tiems),'w')
+    File2 = open( r'%s'%(path2) + r'\Fps2_rawData%s.txt'%(tiems),'w')
     for i in range( len(fps) ):
         #File.write(str(x[i])+' '+str(e[i])+'\n')
         File.write( str(fps[i]) + '\n' )
     File.close()
+    for i in range( len(Fps_raw) ):
+        File2.write( str(Fps_raw[i]) + '\n' )
+    File2.close()
 
 if __name__=='__main__':
     

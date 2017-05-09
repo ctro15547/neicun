@@ -64,9 +64,7 @@ def Pss():
         File.write(str(pss[i])+'\n')
     File.close()
     
-    print type(pss[0])
-    print 'max:',max(pss)
-    print 'min:',min(pss)
+    #print type(pss[0])
     avg = sum(pss) / len(pss)
     print 'average:',avg
 
